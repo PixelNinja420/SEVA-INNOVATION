@@ -44,7 +44,7 @@ export function setupWebSocket(server: FastifyInstance): void {
       server.log.info('WebSocket client disconnected');
     });
 
-    socket.on('error', (err) => {
+    socket.on('error', (err: any) => {
       server.log.error({ err }, 'WebSocket client error');
       connectedClients.delete(socket);
     });

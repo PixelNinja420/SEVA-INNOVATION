@@ -43,7 +43,7 @@ class WrappedStatement {
       const vals = stmt.get();
       stmt.free();
       const row: any = {};
-      cols.forEach((c, i) => { row[c] = vals[i]; });
+      cols.forEach((c: string, i: number) => { row[c] = vals[i]; });
       return row;
     }
     stmt.free();
@@ -59,7 +59,7 @@ class WrappedStatement {
       const cols = stmt.getColumnNames();
       const vals = stmt.get();
       const row: any = {};
-      cols.forEach((c, i) => { row[c] = vals[i]; });
+      cols.forEach((c: string, i: number) => { row[c] = vals[i]; });
       results.push(row);
     }
     stmt.free();
