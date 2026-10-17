@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #F5F2E9;
+  --color-surface: #FFFFFF;
+  --color-primary: #7F9565;
+  --color-primary-dark: #6B7F52;
+  --color-teal: #368F8A;
+  --color-teal-dark: #2A7571;
+  --color-coral: #E56F59;
+  --color-coral-dark: #D05A44;
+  --color-text: #191919;
+  --color-text-muted: #6B7280;
+  --color-success: #24845B;
+  --color-warning: #E5A23D;
+  --color-critical: #D94F45;
+  --color-border: #E3DED2;
+  --color-dark-panel: #171D22;
+  --color-dark-surface: #1E252C;
+  --color-dark-border: #2D3640;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dark-panel ::-webkit-scrollbar-track {
+  background: #171D22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.dark-panel ::-webkit-scrollbar-thumb {
+  background: #2D3640;
+}
+
+.dark-panel ::-webkit-scrollbar-thumb:hover {
+  background: #3E4B59;
+}
+
+/* Leaflet Container Styling */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  z-index: 10;
+  font-family: var(--font-sans);
+}
+
+/* Pulsing radar effect for critical grid alerts */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(217, 79, 69, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(217, 79, 69, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(217, 79, 69, 0);
+  }
+}
+
+.pulse-critical {
+  animation: pulse-ring 2s infinite;
+}

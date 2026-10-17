@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: urja-sync-api
+    runtime: node
+    plan: free
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && node dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: ./data/urja-sync.db
+      - key: CLIENT_URL
+        value: https://urja-sync.vercel.app
+      - key: AI_SERVICE_ENABLED
+        value: false
+    healthCheckPath: /api/health
+    autoDeploy: true
